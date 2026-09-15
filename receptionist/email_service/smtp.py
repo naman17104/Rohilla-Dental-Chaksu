@@ -8,7 +8,7 @@ from typing import Sequence
 import aiosmtplib
 
 from receptionist.config import SMTPConfig
-from receptionist.email.sender import EmailAttachment, EmailSendError
+from receptionist.email_service.sender import EmailAttachment, EmailSendError
 
 logger = logging.getLogger("receptionist")
 

@@ -5,7 +5,7 @@ import logging
 from typing import Any
 
 from receptionist.config import BusinessConfig
-from receptionist.email.summarizer import generate_call_summary
+from receptionist.summarizer import generate_call_summary
 from receptionist.intakes.models import IntakeSubmission
 from receptionist.messaging.models import DispatchContext, Message
 from receptionist.recording.egress import (
