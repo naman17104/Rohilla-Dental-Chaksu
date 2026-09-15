@@ -7,7 +7,7 @@ from pathlib import Path
 
 from receptionist.config import EmailChannel as EmailChannelConfig, EmailConfig
 from receptionist.email.sender import EmailAttachment, EmailSendError, EmailSender
-from receptionist.email.smtp import SMTPSender
+from receptionist.email_service.smtp import SMTPSender``
 from receptionist.email.resend import ResendSender
 from receptionist.email.templates import (
     build_booking_email,
