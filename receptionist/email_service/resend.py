@@ -8,7 +8,7 @@ from typing import Sequence
 import httpx
 
 from receptionist.config import ResendConfig
-from receptionist.email.sender import EmailAttachment, EmailSendError
+from .sender import EmailAttachment, EmailSendError
 
 logger = logging.getLogger("receptionist")
 
