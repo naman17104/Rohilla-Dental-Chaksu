@@ -2756,6 +2756,10 @@ async def handle_call(ctx: agents.JobContext):
         )
     _bc("setup_complete", lifecycle.metadata.call_id)
 
+from livekit.agents import WorkerOptions, cli
 
 if __name__ == "__main__":
-    _run_agent_cli()
+    cli.run_app(WorkerOptions(
+       entrypoint_fnc=handle_call,
+        agent_name="receptionist"
+    ))
