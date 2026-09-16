@@ -21,17 +21,17 @@ from receptionist.messaging.models import Message, DispatchContext
 from receptionist.messaging.retry import retry_with_backoff, RetryPolicy
 from receptionist.transcript.metadata import CallMetadata
 
-logger = logging.getLogger("receptionist")
+logger = logging.getLogger(receptionist)
 
 
 def _build_sender(email_config: EmailConfig) -> EmailSender:
-    if email_config.sender.type == "smtp":
+    if email_config.sender.type == smtp:
         assert email_config.sender.smtp is not None
         return SMTPSender(email_config.sender.smtp)
-    if email_config.sender.type == "resend":
+    if email_config.sender.type == resend:
         assert email_config.sender.resend is not None
         return ResendSender(email_config.sender.resend)
-    raise ValueError(f"Unknown email sender type: {email_config.sender.type}")
+    raise ValueError(fUnknown email sender type: {email_config.sender.type})
 
 
 class EmailChannel:
@@ -109,26 +109,26 @@ class EmailChannel:
         await self._send_with_retry(subject, body_text, body_html, attachments)
 
     async def _transcript_attachments(self, context: DispatchContext) -> list[EmailAttachment]:
-        """Read the markdown transcript and wrap it as a .txt attachment.
+        Read the markdown transcript and wrap it as a .txt attachment.
 
         Returns [] when the channel disables transcripts, no transcript was
         written, or the file is unreadable — the email must still send.
-        """
+        
         if not self.channel_config.include_transcript or not context.transcript_markdown_path:
             return []
         try:
             content = await asyncio.to_thread(Path(context.transcript_markdown_path).read_bytes)
         except OSError:
             logger.warning(
-                "transcript attachment unavailable: %s",
+                transcript attachment unavailable: %s,
                 context.transcript_markdown_path,
-                extra={"component": "email.attachment"},
+                extra={component: email.attachment},
             )
             return []
         return [EmailAttachment(
             filename=transcript_filename(context.call_id),
             content=content,
-            content_type="text/plain",
+            content_type=text/plain,
         )]
 
     async def _send_with_retry(
