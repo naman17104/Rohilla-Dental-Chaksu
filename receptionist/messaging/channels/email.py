@@ -112,7 +112,7 @@ class EmailChannel:
         Read the markdown transcript and wrap it as a .txt attachment.
 
         Returns [] when the channel disables transcripts, no transcript was
-        written, or the file is unreadable — the email must still send.
+        written, or the file is unreadable - the email must still send.
         
         if not self.channel_config.include_transcript or not context.transcript_markdown_path:
             return []
