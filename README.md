@@ -1,4 +1,4 @@
-![Banner](banner.png)
+![Banner](image.png)
 
 # Rohilla Dental Chaksu - AI Voice Receptionist
 
